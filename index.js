@@ -93,6 +93,15 @@ app.put('/api/todos/:id', (req, res) => {
   }
 });
 
+// 4. CLEAR ALL TODOS (MUST be above the :id delete route)
+app.delete('/api/todos/clear', (req, res) => {
+  if (writeTodos([])) {
+    res.json({ message: 'All todos cleared successfully' });
+  } else {
+    res.status(500).json({ error: 'Failed to clear todos' });
+  }
+});
+
 // Delete a todo
 app.delete('/api/todos/:id', (req, res) => {
   const id = parseInt(req.params.id);
@@ -108,16 +117,6 @@ app.delete('/api/todos/:id', (req, res) => {
   } else {
     res.status(500).json({ error: 'Failed to delete todo' });
   }
-});
-
-// Clear all todos
-app.delete('/api/todos/clear', (req, res) => {
-    // Overwrite the file with an empty array
-    if (writeTodos([])) {
-        res.json({ message: 'All todos cleared successfully' });
-    } else {
-        res.status(500).json({ error: 'Failed to clear todos' });
-    }
 });
 
 // Initialize todos file on startup
