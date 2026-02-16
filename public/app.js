@@ -136,11 +136,14 @@ function escapeHtml(text) {
 
 // Event listeners
 addBtn.addEventListener('click', addTodo);
+
 todoInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         addTodo();
     }
+}); // Fixed missing closing bracket here
 
+// Separate listener for the Clear All button
 document.getElementById('clearBtn').addEventListener('click', async () => {
     if (confirm('Are you sure you want to delete all tasks?')) {
         const response = await fetch('/api/todos/clear', {
@@ -153,7 +156,6 @@ document.getElementById('clearBtn').addEventListener('click', async () => {
             alert('Failed to clear todos');
         }
     }
-});
 });
 
 // Initialize
