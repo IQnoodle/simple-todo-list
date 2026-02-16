@@ -141,3 +141,20 @@ h1 {
     color: #6c757d;
     font-size: 18px;
 }
+
+/* Styling for the Clear All button */
+#clearBtn {
+    background-color: #dc3545; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#clearBtn:hover {
+    background-color: #a71d2a; 
+}
+
