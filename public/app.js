@@ -140,6 +140,20 @@ todoInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         addTodo();
     }
+
+document.getElementById('clearBtn').addEventListener('click', async () => {
+    if (confirm('Are you sure you want to delete all tasks?')) {
+        const response = await fetch('/api/todos/clear', {
+            method: 'DELETE',
+        });
+        
+        if (response.ok) {
+            fetchTodos(); 
+        } else {
+            alert('Failed to clear todos');
+        }
+    }
+});
 });
 
 // Initialize

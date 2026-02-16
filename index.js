@@ -110,6 +110,16 @@ app.delete('/api/todos/:id', (req, res) => {
   }
 });
 
+// Clear all todos
+app.delete('/api/todos/clear', (req, res) => {
+    // Overwrite the file with an empty array
+    if (writeTodos([])) {
+        res.json({ message: 'All todos cleared successfully' });
+    } else {
+        res.status(500).json({ error: 'Failed to clear todos' });
+    }
+});
+
 // Initialize todos file on startup
 initTodosFile();
 
